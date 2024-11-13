@@ -1,4 +1,8 @@
 # ExpNo:10 Implementation of Classical Planning Algorithm
+
+# Aim
+To solve Implementation of Classical Planning Algorithm using python
+
 # Algorithm or Steps Involved:
 <ol>
   <li>Define the initial state</li>
@@ -44,7 +48,11 @@ print(plan)
 ['move_A_to_B', 'move_B_to_C']
 ```
 
-# Program:
+# Please Prepare Solution or Definition For the method find_plan(initial_state, goal_state, actions)
+<h3>You Can use any of the searching Strategies for planning and executing a sequence of actions.<br> You can also look in to the Code given in the Repository.</h3>
+
+# Program
+
 ```
 def is_goal_state(current_state, goal_state):
     return current_state == goal_state
@@ -53,9 +61,6 @@ def apply_action(current_state, action_effect):
     new_state = current_state.copy()
     new_state.update(action_effect)
     return new_state
-
-def is_applicable(current_state, precondition):
-    return all(current_state.get(key) == value for key, value in precondition.items())
 
 def find_plan(initial_state, goal_state, actions):
     queue = [(initial_state, [])]
@@ -79,6 +84,19 @@ def find_plan(initial_state, goal_state, actions):
 
     print("No plan exists.")
     return None
+def is_applicable(current_state, precondition):
+    return all(current_state.get(key) == value for key, value in precondition.items())
+# Example
+initial_state = {'A': 'Table', 'B': 'Table'}
+goal_state = {'A': 'B', 'B': 'Table'}
+
+actions = {
+    'move_A_to_B': {'precondition': {'A': 'Table', 'B': 'Table'}, 'effect': {'A': 'B'}},
+    'move_B_to_Table': {'precondition': {'A': 'Table', 'B': 'B'}, 'effect': {'B': 'Table'}}
+}
+
+plan = find_plan(initial_state, goal_state, actions)
+print(plan)
 
 initial_state = {'A': 'Table', 'B': 'Table', 'C': 'Table'}
 goal_state = {'A': 'B', 'B': 'C', 'C': 'Table'}
@@ -92,9 +110,20 @@ actions = {
 plan = find_plan(initial_state, goal_state, actions)
 print(plan)
 
-```
-# Output:
-![Screenshot 2024-11-04 084130](https://github.com/user-attachments/assets/8557f551-9ae2-4e2a-8dee-1ac2deef447f)
+initial_state = {'A': 'Table', 'B': 'Table'}
+goal_state = {'A': 'Table', 'B': 'Table'}
 
-# Result:
-  Thus Program for Implementation of Classical Planning Algorithm was executed Successfully.
+actions = {
+    'move_A_to_B': {'precondition': {'A': 'Table', 'B': 'Table'}, 'effect': {'A': 'B'}}
+}
+
+plan = find_plan(initial_state, goal_state, actions)
+print(plan)
+```
+
+# Output
+
+![image](https://github.com/user-attachments/assets/3504400b-c02e-4383-8b8d-7d0f0a521f74)
+
+# Result
+Therefore,Implementation of Classical Planning Algorithm is implemetated successfully.
